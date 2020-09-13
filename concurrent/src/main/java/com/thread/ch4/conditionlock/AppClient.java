@@ -2,7 +2,6 @@ package com.thread.ch4.conditionlock;
 
 import com.thread.util.ThreadSleep;
 
-import java.lang.ref.Reference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Condition;
