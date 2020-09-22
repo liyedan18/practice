@@ -50,7 +50,7 @@ public class CompleteTest {
 
         //开启任务并添加到结果队列
         for (int i = 0; i < TOTAL_TASK; i++) {
-            Future<Integer> task = executor.submit(new com.leetcode.lambda.compleservice.TaskCallable());
+            Future<Integer> task = executor.submit(new TaskCallable());
             queue.add(task);
         }
 
@@ -80,7 +80,7 @@ public class CompleteTest {
 
         //任务添加到complete
         for (int i = 0; i < TOTAL_TASK; i++) {
-            completion.submit(new com.leetcode.lambda.compleservice.TaskCallable());
+            completion.submit(new TaskCallable());
         }
 
         //获取任务结果
