@@ -1,4 +1,4 @@
-package p043;
+package stringcase.p043;
 
 
 /**
@@ -12,27 +12,46 @@ package p043;
  * https://www.nowcoder.com/practice/12d959b108cb42b1ab72cef4d36af5ec?tpId=13&&tqId=11196&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
  *
  * 思路1：
+ * 算法
+ *
+ *
+ * 思路2：
+ * 字符串翻转
  * 实际最后移动的位数=左移的位数%字符串长度
- * 把字符串以实际移动位数为分界点，切割为两份，然后拼接返回：后半部分＋前半部分
+ * YX = (X'Y')'
+ * 转换为字符串，以n为中点分段，左边段做翻转，右边做翻转，然后再整体翻转.
+ * 也就是3次翻转
  *
  */
-public class Solution {
+public class Solution2 {
 
     public String leftRotateString(String str, int n) {
-        if (str == null || str.equals("") || n <= 0){
+        if (str == null || str.equals("") || n <= 0) {
             return str;
         }
 
-        if (str.length() == 1){
+        if (str.length() == 1) {
             return str;
         }
 
         int actualN = n % str.length();
-        return  str.substring(actualN, str.length()) + str.substring(0, actualN);
+        char[] chars = str.toCharArray();
+        reverse(chars, 0, actualN - 1);
+        reverse(chars, actualN, str.length() - 1);
+        reverse(chars, 0, str.length() - 1);
+        return String.valueOf(chars);
+    }
+
+    public void reverse(char[] chars, int begin, int end) {
+        for (int i = begin, j = end; i <= j; i++, j--) {
+            char temp = chars[i];
+            chars[i] = chars[j];
+            chars[j] = temp;
+        }
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.leftRotateString("abcdefg", 2));;
+        Solution2 solution = new Solution2();
+        System.out.println(solution.leftRotateString("abcdefg", 2));
     }
 }
