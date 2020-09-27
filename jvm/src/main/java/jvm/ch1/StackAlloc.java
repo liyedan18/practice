@@ -10,6 +10,7 @@ package jvm.ch1;
 public class StackAlloc {
 
     public static void main(String[] args) {
+
         long start = System.currentTimeMillis();
         for (int i = 0; i < 100000000; i++) {
             alloc();
