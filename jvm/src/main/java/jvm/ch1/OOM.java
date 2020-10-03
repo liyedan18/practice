@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * 演示两种堆OOM异常
+ * Java8
  * VM参数：
  *    -Xms5m -Xmx5m -XX:+PrintGC
  */
