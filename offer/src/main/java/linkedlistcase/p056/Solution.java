@@ -17,6 +17,8 @@ import java.util.List;
  * 遍历链表，把链表的值存入list，每次去list判断是否有这个值，有就删除
  * 遍历同时记录上一个节点a，和当前链表的下一个节点c，删除，即让b指向null，a指向c
  *
+ * 这方法可真不行！
+ *
  */
 public class Solution {
 
