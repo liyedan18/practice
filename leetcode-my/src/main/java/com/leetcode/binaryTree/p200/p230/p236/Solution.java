@@ -19,7 +19,7 @@ import com.leetcode.binaryTree.TreeNode;
  链接：https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree
 
 
-
+ 如何把题目的描述转换为具体的一步一步的思想
 
 
  递归解决：
