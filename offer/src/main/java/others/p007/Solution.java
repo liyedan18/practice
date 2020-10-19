@@ -8,6 +8,9 @@ package others.p007;
  * https://www.nowcoder.com/practice/c6c7742f5ba7442aada113136ddea0c3?tpId=13&&tqId=11160&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
  *
  *
+ * 思路：
+ * 第n个=第n-1个+第n-2个
+ *
  */
 public class Solution {
 
