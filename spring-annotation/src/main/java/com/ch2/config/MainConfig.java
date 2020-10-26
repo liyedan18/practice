@@ -14,8 +14,9 @@ import org.springframework.stereotype.Controller;
 @Configuration
 //@Component @Controller @Service @Repository
 @ComponentScan(value = "com.ch2", includeFilters = {
-        @Filter(type = FilterType.ANNOTATION, classes = Controller.class),
-        @Filter(type = FilterType.ASSIGNABLE_TYPE, classes = OrderService.class)
+//        @Filter(type = FilterType.ANNOTATION, classes = Controller.class),
+//        @Filter(type = FilterType.ASSIGNABLE_TYPE, classes = OrderService.class)
+        @Filter(type = FilterType.CUSTOM, classes = MyTypeFilter.class)
 }, useDefaultFilters = false)
 public class MainConfig {
 
