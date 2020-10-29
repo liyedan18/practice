@@ -33,4 +33,9 @@ public class Ch6Config {
     // public MyImportBeanDefinitionRegister register() {
     //     return new MyImportBeanDefinitionRegister();
     // }
+
+    @Bean
+    public MyFactoryBean myFactoryBean(){
+        return new MyFactoryBean();
+    }
 }

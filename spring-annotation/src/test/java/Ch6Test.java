@@ -20,4 +20,21 @@ public class Ch6Test {
         System.out.println(fish);
     }
 
+    /**
+     * 测试MyFactoryBean的返回类型
+     * 看Monkey是否被注册到容器中
+     */
+    @Test
+    public void testFactoryBean(){
+        ApplicationContext app = new AnnotationConfigApplicationContext(Ch6Config.class);
+
+        Object o = app.getBean("myFactoryBean");
+        //class com.ch6.bean.Monkey
+        System.out.println(o.getClass());
+
+        Object o1 = app.getBean("&myFactoryBean");
+        // class com.ch6.config.MyFactoryBean
+        System.out.println(o1.getClass());
+    }
+
 }

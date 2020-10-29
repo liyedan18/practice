@@ -20,7 +20,7 @@ public class MyImportBeanDefinitionRegister implements ImportBeanDefinitionRegis
                                         BeanDefinitionRegistry registry) {
 
         //打印当前类的注解
-        importingClassMetadata.getAnnotations().forEach(System.out::println);
+        // importingClassMetadata.getAnnotations().forEach(System.out::println);
 
         //要用全类名
         // boolean catFlag = registry.containsBeanDefinition("cat");
