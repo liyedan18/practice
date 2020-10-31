@@ -4,6 +4,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 /**
  * 演示bean的生命周期
+ * 可以自定义初始化和销毁方法：（3种方式）
  */
 public class Ch7Test {
 
@@ -16,7 +17,7 @@ public class Ch7Test {
         System.out.println("IOC容器初始化完成...");
 
         //多实例模式下，只有在获取bean的时候才初始化
-        app.getBean("bike");
+        // app.getBean("bike");
 
         //单实例模式下，关闭容器，即销毁 bean。多实例不会销毁bean。
         app.close();
