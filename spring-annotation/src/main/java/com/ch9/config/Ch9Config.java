@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 @Configuration
-@ComponentScan({"com.ch9.controller", "com.ch9.service", "com.ch9.repo"})
+@ComponentScan({"com.ch9.controller", "com.ch9.service", "com.ch9.repo", "com.ch9.bean"})
 public class Ch9Config {
 
     @Primary

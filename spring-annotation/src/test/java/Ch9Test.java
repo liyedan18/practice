@@ -53,4 +53,11 @@ public class Ch9Test {
 
     }
 
+    @Test
+    public void testAware(){
+        ApplicationContext app = new AnnotationConfigApplicationContext(Ch9Config.class);
+        //验证与ApplicationContextAware获取的容器是同一个
+        System.out.println("Annotation获取的容器：" + app);
+    }
+
 }
