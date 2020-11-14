@@ -2,6 +2,7 @@ package com.ch10.config;
 
 import com.ch10.aop.Calculator;
 import com.ch10.aop.LogAspect;
+import com.ch10.aop.LogAspectJointPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -15,8 +16,14 @@ public class Ch10Config {
         return new Calculator();
     }
 
+    // 测试LogAspect时开启
+    // @Bean
+    // public LogAspect logAspect(){
+    //     return new LogAspect();
+    // }
+
     @Bean
-    public LogAspect logAspect(){
-        return new LogAspect();
+    public LogAspectJointPoint logAspectJointPoint(){
+        return new LogAspectJointPoint();
     }
 }
