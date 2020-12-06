@@ -14,7 +14,11 @@ package linkedlistcase.p015;
 public class Solution2 {
 
     public ListNode ReverseList(ListNode head) {
-        if (head == null || head.next == null) {
+        if (head == null) {
+            return null;
+        }
+        //只有一个节点，直接返回改节点即可
+        if (head.next == null) {
             return head;
         }
 
