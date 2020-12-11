@@ -1,4 +1,4 @@
-package others.p007;
+package dynamicProgram.p007;
 
 /**
  * 007 题目描述：
