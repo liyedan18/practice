@@ -1,4 +1,4 @@
-package com.leetcode.dynamicProgram.p000.p010.p005;
+package com.leetcode.dynamicProgram.p000.p000.p005;
 
 /**
  * 5. 最长回文子串
