@@ -1,4 +1,4 @@
-package com.leetcode.array.p000.p000.p001;
+package com.leetcode.array.nSum.p001;
 
 
 import java.util.HashMap;
