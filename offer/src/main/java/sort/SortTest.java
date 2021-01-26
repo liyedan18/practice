@@ -136,7 +136,7 @@ public class SortTest {
      * 希尔排序采用多个增量
      *
      * 时间复杂度：
-     *      最坏：O(N^1.3)
+     *      平均：O(N^1.3)
      * 稳定性：
      *      不稳定
      *      增量变化会破坏稳定性
@@ -293,4 +293,70 @@ public class SortTest {
         return i;
     }
 
+    /**
+     * 堆排序
+     * （升序选择大顶堆，降序选择小顶堆）
+     *
+     * 1.维护大顶堆的性质
+     *  （从最后一个元素的父节点开始，倒序创建大顶堆）
+     * 2.将根节点与最后一个节点交换，并将最后一个节点从大顶堆中移除，然后继续维护根节点的大顶堆性质
+     *      (根节点已经是最大的元素)
+     *
+     * 堆是完全二叉树
+     * 性质：
+     *      节点i父节点：(i-1)/2
+     *      节点i左子节点：(i*2)+1
+     *      节点i右子节点：(i*2)+2
+     *
+     * 时间复杂度：
+     *      最好最坏平均都是O(N*logN)
+     * 空间复杂度：
+     *      O(1)
+     * 稳定性：
+     *      不稳定
+     */
+    private void heapSort(int[] arr) {
+        //维护大顶堆性质
+        for (int i = ((arr.length - 1) - 1) / 2; i >= 0; i--) {
+            adjustMaxHeap(arr, arr.length, i);
+        }
+
+        //交换首尾元素，并维护大顶堆性质
+        for (int i = arr.length - 1; i >= 0; i--) {
+            //将根节点元素交换到最后，根节点已经是最大的元素
+            swap(arr, i, 0);
+            //维护交换后的大顶堆性质,移除了最后一个元素
+            adjustMaxHeap(arr, i, 0);
+        }
+    }
+
+    /**
+     * 维护大顶堆性质
+     * @param index 要维护的大顶堆元素索引（在数组中的索引）
+     * @param length 当前大顶堆元素总数(长度)
+     */
+    private void adjustMaxHeap(int[] arr, int length, int index) {
+
+        //假设当前索引元素在自己的二叉树中是最大的
+        int maxValueOfIndex = index;
+        int left = index * 2 + 1;
+        int right = index * 2 + 2;
+
+        //当前元素与左孩子和右孩子分别比较大小
+        if (left < length && arr[maxValueOfIndex] < arr[left]) {
+            maxValueOfIndex = left;
+        }
+        if (right < length && arr[maxValueOfIndex] < arr[right]) {
+            maxValueOfIndex = right;
+        }
+
+        //当前索引元素不是自己所在二叉树的最大值，则调整当前元素位置
+        if (maxValueOfIndex != index) {
+            //交换后，maxValueOfIndex的位置就是改变的左子树或右子树的位置
+            swap(arr, index, maxValueOfIndex);
+            //递归调整已经改变的左子树或右子树的大顶堆性质
+            adjustMaxHeap(arr, length, maxValueOfIndex);
+        }
+
+    }
 }
