@@ -1,4 +1,4 @@
-package com.leetcode.array.p1100.p1100.p1101;
+package com.leetcode.array.p1000.p1000.p1011;
 
 import java.util.Arrays;
 
