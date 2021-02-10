@@ -1,4 +1,4 @@
-package com.leetcode.stack.p000.p020.p020;
+package com.leetcode.stack_queue.p000.p020.p020;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,46 +48,29 @@ import java.util.Stack;
  *      2、如果s的长度是奇数，一定是false
  *      3、如果匹配完成后，栈为空，则是true，否则是false。
  */
-public class Solution {
+public class Solution2 {
     public boolean isValid(String s) {
-
-        if (s == null || s.equals("") || s.length() % 2 != 0) {
-            return false;
-        }
+        Map<Character, Character> map = new HashMap<>();
+        map.put('(', ')');
+        map.put('{', '}');
+        map.put('[', ']');
 
         Stack<Character> stack = new Stack<>();
         for (char c : s.toCharArray()) {
             if (map.containsKey(c)) {
                 stack.push(c);
             } else {
-                if (stack.isEmpty()) {
-                    return false;
-                }
-                Character top = stack.pop();
-                if (c != map.get(top)) {
+                if (stack.isEmpty() || c != map.get(stack.pop())) {
                     return false;
                 }
             }
         }
 
-        //匹配完毕
-        if (stack.isEmpty()) {
-            return true;
+        //特别注意，要考虑stack非空的情况
+        if (!stack.isEmpty()){
+            return false;
         }
-        return false;
+
+        return true;
     }
-
-    private static Map<Character, Character> map = new HashMap<>();
-
-    static {
-        map.put('{', '}');
-        map.put('[', ']');
-        map.put('(', ')');
-    }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.isValid("()"));
-    }
-
 }
