@@ -1,4 +1,4 @@
-package linkedlistcase.p036;
+package linkedlistcase.p052;
 
 public class ListNode {
     int val;
