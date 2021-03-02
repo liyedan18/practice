@@ -1,11 +1,20 @@
-package linkedlistcase.p016;
+package linkedlistcase.p025;
 
 /**
- * 016   题目描述
- * 输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。
- * (类似题目：合并k个排序链表，也是利用本题的解法，只不过要进行两两合并)
+ * 剑指 Offer 25. 合并两个排序的链表
  *
- * https://www.nowcoder.com/practice/d8b6b4358f774294a89de2a6ac4d9337?tpId=13&&tqId=11169&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+ * 输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。
+ *
+ * 示例1：
+ *
+ * 输入：1->2->4, 1->3->4
+ * 输出：1->1->2->3->4->4
+ * 限制：
+ *
+ * 0 <= 链表长度 <= 1000
+ *
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof
  *
    思路1：
  * 1->3->5

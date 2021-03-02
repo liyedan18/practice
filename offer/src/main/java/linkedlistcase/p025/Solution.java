@@ -1,33 +1,100 @@
 package linkedlistcase.p025;
 
-
 /**
- * 025   题目描述
- * 输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针random指向一个随机节点），
- * 请对此链表进行深拷贝，并返回拷贝后的头结点。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空）
+ * 剑指 Offer 25. 合并两个排序的链表
  *
- *https://www.nowcoder.com/practice/f836b2c43afc4b35ad6adc41ec941dba?tpId=13&&tqId=11178&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+ * 输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。
+ *
+ * 示例1：
+ *
+ * 输入：1->2->4, 1->3->4
+ * 输出：1->1->2->3->4->4
+ * 限制：
+ *
+ * 0 <= 链表长度 <= 1000
+ *
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof
  *
  *
- * 这道题完全不知所云。直接看书上的思路。
+ * 思路1：
+ * 1->3->5
+ * 2->4->6
+ * 因为已经排序好了，每次只比较两个队列的头结点即可。那么
+ * 1和2比较取1，同时，节点指针往后移动一位。然后剩下：
+ * 3->5
+ * 2->4->6
+ * 这时，2和3比较，取2,同时，节点指针往后移动一位。
  *
- * 思路：
- * 1.将链表每个节点在后面都复制一份，
- * A->B->C  变成了  A->A'->B->B'->C->C'
+ * 重复，直到有其中一个为null.这时注意，两个链表是长短不一样的，剩下的没移动完的链表，
+ * 要补在结果链表的后面。
  *
- * 2.确定复制后链表节点的random指针位置。也就是原节点的下一个节点
- * 例：如果A->C  那么A'->C'
  *
- * 3.将整个链表分开，奇数位是原来的链表，偶数位是新链表。
+ * 这个结果是错误的，头指针有问题。
  *
+ * 参考2和3
  */
 public class Solution {
-    public RandomListNode Clone(RandomListNode pHead) {
+
+    public ListNode Merge(ListNode list1,ListNode list2) {
+        if(list1 == null){
+            return list2;
+        }
+        if(list2 == null){
+            return list1;
+        }
+
+        /**
+         * 这里注意：想要保存结果链表的头结点
+         * 一般是可以创建一个临时链表，然后让临时链表的头结点指向结果链表
+         * 然后后面的操作，都由临时链表来执行。最后返回结果链表即可。   引用。
+         * 对比Solution2
+         */
+        ListNode list = null;
+        ListNode resultHead = null;
+
+        if(list1.val <= list2.val){
+            list = list1;
+            list1 = list1.next;
+        } else {
+            list = list2;
+            list2 = list2.next;
+        }
+        resultHead = list;
+        list = list.next;
+
+        while(list1!=null && list2 !=null){
+            if(list1.val <= list2.val){
+                list = list1;
+                list1 = list1.next;
+            } else {
+                list = list2;
+                list2 = list2.next;
+            }
+            list = list.next;
+        }
+
+        if (list2 != null){
+            list = list2;
+        } else {
+            list = list1;
+        }
+
+        return resultHead;
 
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
+        ListNode list1 = new ListNode(1);
+        list1.next = new ListNode(3);
+        list1.next.next = new ListNode(5);
+
+        ListNode list2 = new ListNode(2);
+        list2.next = new ListNode(4);
+        list2.next.next = new ListNode(6);
+
+        System.out.println(solution.Merge(list1, list2).val);
 
     }
 }
