@@ -85,5 +85,4 @@ public class Solution {
             curSum -= candidates[i];
         }
     }
-
 }
