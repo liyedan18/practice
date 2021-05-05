@@ -54,7 +54,6 @@ public class Solution2 {
 
         ListNode pre = stack.peek();
         pre.next = pre.next.next;
-
         return vhead.next;
     }
 }
